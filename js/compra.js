@@ -1,16 +1,14 @@
 "use strict"
 export default carrito;
 
-
 function carrito() {
-    
+
     let inputproducto = document.querySelector("#producto");
     let inputcantidad = document.querySelector("#cantidad");
     let inputprecio = document.querySelector("#precio");
     const selectElement = document.querySelector('#producto');
     let DESCUENTO = 0.9;
 
-    
     const url = 'https://60c902ba7dafc90017ffbf64.mockapi.io/api/usuario';
     let id = 0;
     getData();
@@ -169,7 +167,7 @@ function carrito() {
 
     function agregar(evento) {
         evento.preventDefault();
-        
+
         let producto = inputproducto.value;
         let cantidad = inputcantidad.value;
         let precio = parseFloat(parseFloat(inputprecio.value).toFixed(2));
@@ -246,10 +244,10 @@ function carrito() {
             if (productos[i].producto == 'SandwichMilanesaCarneSuper') {
 
                 tabla.innerHTML += `<tr class="resaltado">
-            <td class="producto1"> Super Sandwich -----> ${100-(DESCUENTO.toFixed(1))*100}% DESCUENTO!!</td>
-            <td class="columna">$ ${productos[i].precio*DESCUENTO}</td>
+            <td class="producto1"> Super Sandwich -----> ${100 - (DESCUENTO.toFixed(1)) * 100}% DESCUENTO!!</td>
+            <td class="columna">$ ${productos[i].precio * DESCUENTO}</td>
             <td class="columna">${productos[i].cantidad}</td>
-            <td class="columna"> $ ${productos[i].precio*DESCUENTO*productos[i].cantidad}</td>
+            <td class="columna"> $ ${productos[i].precio * DESCUENTO * productos[i].cantidad}</td>
             </tr>`;
             } else if (productos[i].producto == 'Promo3') {
                 tabla.innerHTML += `<tr class="resaltado">
@@ -312,7 +310,7 @@ function carrito() {
     let c = ' ';
     let captcha;
 
-    function refresh_captcha(evento) { 
+    function refresh_captcha(evento) {
 
         let operacion = '-*+';
         c = operacion.charAt(Math.floor(Math.random() * 3));
@@ -370,10 +368,6 @@ function carrito() {
 
     refresh_captcha();
 
-
-    
-
-
     let usuario = [];
 
     function personaNueva() {
@@ -403,7 +397,7 @@ function carrito() {
 
             if (res.status == 201) {
                 console.log("Creado!");
-                getData(); 
+                getData();
             }
         } catch (error) {
             console.log(error);
@@ -440,6 +434,7 @@ function carrito() {
          <td class="botonesEditar"> <button class="btn btn-dark" id="btn-mostrarTodos" type="submit">Mostrar Todos</button></td>
          </tr></thead><tbody id='cuerpoTabla2'></tbody>`;
 
+        console.log(error);
         mostrarUsuarios(usuario);
         document.getElementById("btn-agregarVarios").addEventListener("click", variosUsuarios);
 
@@ -459,17 +454,17 @@ function carrito() {
          </tr>`;
             id = usuario[i].id;
         }
-        
+
         document.querySelectorAll(".btn-eliminar").forEach(boton => {
-            boton.addEventListener("click", function() {
+            boton.addEventListener("click", function () {
                 eliminarPersona(boton.value);
-                document.getElementById(boton.value).remove(); 
+                document.getElementById(boton.value).remove();
 
             });
         });
 
         document.querySelectorAll(".btn-editar").forEach(boton => {
-            boton.addEventListener("click", function() {
+            boton.addEventListener("click", function () {
                 mostrarEditar(boton.parentNode.parentNode);
             });
         });
